@@ -1,20 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler'
+import React from "react";
+import {RootNavigator} from './src/navigation/RootNavigator';
+import { NativeBaseProvider, Box, extendTheme } from "native-base";
+
+const phyxiColorTheme = {
+  brandPrimary : {
+    900: "#03989E",
+    800: "#1ca2a7",
+    700: "#35ACB1",
+    600: "#4EB6BB",
+    500: "#67C1C4"
+  }
+}
+
+const theme = extendTheme(
+  {colors : phyxiColorTheme}
+)
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NativeBaseProvider theme={theme}>
+      <RootNavigator/>
+      
+    </NativeBaseProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
