@@ -7,7 +7,8 @@ type CategoryProps = {
     id: string,
     label: string,
     iconName: string,
-    asIcon: JSX.Element
+    asIcon: JSX.Element,
+    iconColor: string,
 }
 
 type ServiceCategoriesProps = {
@@ -24,7 +25,7 @@ const _colors = {
 
 const ServiceCategories : React.FC<ServiceCategoriesProps> = ({categoryPress, data}) => {
     const ref = useRef(null);
-    const [index, setIndex] = useState(0);
+    const [index, setIndex] = useState(null);
 
     useEffect(() => {
         ref.current?.scrollToIndex({
@@ -52,7 +53,7 @@ const ServiceCategories : React.FC<ServiceCategoriesProps> = ({categoryPress, da
                         overflow="hidden">
                         <MotiView
                             animate={{
-                                borderBottomWidth: itemIndex === index ? 2 : 0,
+                                
                                 opacity: itemIndex === index ? 1 : 0.4,
                                 
                             }}
@@ -64,11 +65,10 @@ const ServiceCategories : React.FC<ServiceCategoriesProps> = ({categoryPress, da
                                 padding: 5,
                                 alignItems: "center",
                                 borderColor: phyxiColorTheme.brandPrimary[800],
-                                
                             }}
                         >
-                            <Icon as={item.asIcon} name={item.iconName} size="md" color="coolGray.600"/>
-                            <Text fontWeight="500" color="coolGray.600">
+                            <Icon as={item.asIcon} name={item.iconName} size="xl" color={item.iconColor}/>
+                            <Text fontWeight="600" fontSize="md" color="coolGray.500">
                                 {item.label}
                             </Text>
                         </MotiView>
