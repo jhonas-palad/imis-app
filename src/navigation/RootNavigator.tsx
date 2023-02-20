@@ -42,6 +42,7 @@ export const RootNavigator: React.FC = () => {
                     },
                     tabBarActiveTintColor: 'brandPrimary.900',
                     tabBarInactiveTintColor: 'brandPrimary.900',
+                    headerShown: false
                 })}
             >
                 <Tab.Screen name="Home" component={HomeScreen} />

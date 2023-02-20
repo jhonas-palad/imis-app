@@ -3,6 +3,7 @@ import {FlatList, Pressable, Icon, Text} from 'native-base';
 import { MotiView } from 'moti';
 import { Easing } from 'react-native-reanimated';
 import { phyxiColorTheme } from '../constants';
+
 type CategoryProps = {
     id: string,
     label: string,
@@ -15,13 +16,6 @@ type ServiceCategoriesProps = {
     categoryPress: (item: CategoryProps, itemIndex: number) => void;
     data: Array<CategoryProps> 
 }
-
-
-const _colors = {
-    active: `#FCD259ff`,
-    inactive: `#FCD25900`,
-}
-
 
 const ServiceCategories : React.FC<ServiceCategoriesProps> = ({categoryPress, data}) => {
     const ref = useRef(null);
