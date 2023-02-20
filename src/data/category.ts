@@ -1,98 +1,279 @@
 import { makeID } from "../utils/uid";
 import { Ionicons, MaterialIcons, MaterialCommunityIcons  } from '@expo/vector-icons';
 
+const allIDs = (arr : any[]) => [...arr.map(i => i?.id)];
+
 type IconProp = {
-    as: JSX.Element,
+    asIcon: any,
     name: string,
     color: string,
 }
 
-export const categoryData: Array<{id:string, label:string, iconName: string, asIcon: any, iconColor: string}> = [
+type PackageProps = {
+    id: string,
+    packageName: string,
+    packageDescription: string[],
+    packageRate: number,
+    categories: string[],
+    packageImage ?: {
+        source?: string,
+        uri?: string
+    }
+}
+
+type CategoryProps = {
+    id: string,
+    categoryName: string
+}
+
+
+type service = {
+    id: string,
+    label: string,
+    icon: IconProp,
+    categories: CategoryProps[],
+    packages: PackageProps[]
+
+}
+
+
+const cleaningCategories = [
+    {
+        id: makeID(),
+        categoryName: 'Bedroom',
+    },
+    {
+        id: makeID(),
+        categoryName: 'Bathroom',
+    },
+    {
+        id: makeID(),
+        categoryName: 'Kitchen',
+    },
+    {
+        id: makeID(),
+        categoryName: 'Balcony',
+    },
+    
+];
+
+const beautyCareCategories = [
+    {
+        id: makeID(),
+        categoryName: 'Nails',
+    },
+    {
+        id: makeID(),
+        categoryName: 'Lashes',
+    },
+    {
+        id: makeID(),
+        categoryName: 'Waxing',
+    }
+    
+];
+
+const hairCutCategories = [
+    {
+        id: makeID(),
+        categoryName: 'Male'
+    },
+    {
+        id: makeID(),
+        categoryName: 'Female'
+    },
+
+];
+
+const petCareCategories = [
+    {
+        id: makeID(),
+        categoryName: 'Dog'
+    },
+    {
+        id: makeID(),
+        categoryName: 'Cat'
+    }
+];
+
+const maintenanceCategories = [
+    {
+        id: makeID(),
+        categoryName: 'Dog'
+    },
+    {
+        id: makeID(),
+        categoryName: 'Cat'
+    }
+];
+
+
+export const services: Array<service> = [
     {
         id: makeID(),
         label: 'Cleaning',
-        iconName: 'broom',
-        asIcon: MaterialCommunityIcons,
-        iconColor: 'tertiary.400'
-
+        icon: {
+            asIcon: MaterialCommunityIcons,
+            name: 'broom',
+            color: 'tertiary.400'
+        },
+        categories: cleaningCategories,
+        packages: [
+            {
+                id: makeID(),
+                packageName: 'Bathroom cleaning',
+                packageDescription: [
+                    'Basic cleaning of bathroom shower.'
+                ],
+                packageRate: 200,
+                categories: [
+                    cleaningCategories[1].id
+                ]
+            },
+            {
+                id: makeID(),
+                packageName: 'Tiles cleaning',
+                packageDescription: [
+                    'Basic cleaning of floor.'
+                ],
+                packageRate: 500,
+                categories: allIDs(cleaningCategories)
+                
+            },
+            {
+                id: makeID(),
+                packageName: 'Disinfect Spraying',
+                packageDescription: ['Wiping of all surfaces with disinfectant', '30 Mins per order', 'Best Seller'],
+                packageRate: 600,
+                categories: allIDs(cleaningCategories)
+                
+            },
+            {
+                id: makeID(),
+                packageName: 'Balcony cleaning',
+                packageDescription: [
+                    'Wiping of handrails and surfaces',
+                    'Cleaning of all flooring.'
+                ],
+                packageRate: 500,
+                categories: [cleaningCategories[3].id]
+            },
+        ]
     },
     {
         id: makeID(),
         label: 'Beauty Service',
-        iconName: 'face-woman-shimmer',
-        asIcon: MaterialCommunityIcons,
-        iconColor: 'secondary.600' 
-
+        icon: {
+            asIcon: MaterialCommunityIcons,
+            name: 'face-woman-shimmer',
+            color: 'secondary.600'
+        },
+        categories: beautyCareCategories,
+        packages: [
+            {
+                id: makeID(),
+                packageName: 'Lash Lift',
+                packageDescription: [
+                    'Lengthier & curlier lashes that will last weeks'
+                ],
+                packageRate: 800,
+                categories: [
+                    beautyCareCategories[1].id
+                ],
+                
+            },
+            {
+                id: makeID(),
+                packageName: 'Kerating Lash Lift',
+                packageDescription: [
+                    'For fuller-looking lashes without the extensions',
+                    'Boosts the natural Keratin in your eyelashes'
+                ],
+                packageRate: 800,
+                categories: [
+                    beautyCareCategories[1].id
+                ],
+                
+            },
+        ]
     },
     {
         id: makeID(),
         label: 'Haircut',
-        iconName: 'cut',
-        asIcon: Ionicons,
-        iconColor: '#0ea5e9'
+        icon: {
+            asIcon: Ionicons,
+            name: 'cut',
+            color: '#0ea5e9'
+        },
+        categories: hairCutCategories,
+        packages: [
+            {
+                id: makeID(),
+                packageName: 'Basic Haircut',
+                packageDescription: [
+                    'Get a fresh, clean cut in the comfort of your home',
+                    'Groom, trim, or sculpt facial hair'
+                ],
+                packageRate: 400,
+                categories: [
+                    hairCutCategories[0].id
+                ],
+            },
+            {
+                id: makeID(),
+                packageName: 'Hair color',
+                packageDescription: [
+                    'Get a fresh, clean cut in the comfort of your home',
+                    'Groom, trim, or sculpt facial hair'
+                ],
+                packageRate: 400,
+                categories: allIDs(hairCutCategories),
+            },
+        ]
 
     },
     {
         id: makeID(),
         label: 'Maintenance',
-        iconName: 'home-repair-service',
-        asIcon: MaterialIcons,
-        iconColor: '#facc15' 
-
+        icon: {
+            asIcon: MaterialIcons,
+            name: 'home-repaire-service',
+            color: '#facc15'
+        },
+        categories: [],
+        packages: [
+            {
+                id: makeID(),
+                packageName: 'Dog grooming',
+                packageDescription: [
+                    'Groom your dog with no hassle',
+                ],
+                packageRate: 400,
+                categories: [petCareCategories[0].id]
+            }
+        ]
     },
     {
         id: makeID(),
         label: 'Pet care ',
-        iconName: 'pets',
-        asIcon: MaterialIcons ,
-        iconColor: 'indigo.700'
+        icon: {
+            asIcon: MaterialIcons,
+            name: 'pets',
+            color: 'indigo.700'
+        },
+        categories: petCareCategories,
+        packages: [
+            {
+                id: makeID(),
+                packageName: 'Dog grooming',
+                packageDescription: [
+                    'Groom your dog with no hassle',
+                ],
+                packageRate: 400,
+                categories: [petCareCategories[0].id]
+            }
+        ]
 
     }
 
-]
-
-
-type categoryPackage = {
-    packageId: string,
-    packageName: string,
-    packageDescription: string[],
-    packageRate: number,
-    packageCategory: string[],
-    packageImage : {
-        source?: string,
-        uri?: string
-    }
-
-}
-
-export const servicePackages = [
-    {
-        packageId: categoryData[0].id,
-        packageName: 'Bathroom Cleaning',
-        packageDescription: ['Basic cleaning of bathroom shower.'],
-        packageRate: 200,
-        packageCategory: ['Bathroom'],
-
-    },
-    {
-        packageId: categoryData[0].id,
-        packageName: 'Tiles Cleaning',
-        packageDescription: ['Basic cleaning of floor.'],
-        packageRate: 200,
-        packageCategory: ['Bathroom', 'Kitchen']
-    },
-    {
-        packageId: categoryData[0].id,
-        packageName: 'Disinfect Spraying',
-        packageDescription: ['Wiping of all surfaces with disinfectant', '30 Mins per order', 'Best Seller'],
-        packageRate: 200,
-        packageCategory: ['Bathroom', 'Kitchen']
-    },
-    {
-        packageId: categoryData[0].id,
-        packageName: 'Balcony Cleaning',
-        packageDescription: ['Cleaning of all flooring.', 'Wiping of handrails and surfaces'],
-        packageRate: 400,
-        packageCategory: ['Balcony']
-    }
 ]

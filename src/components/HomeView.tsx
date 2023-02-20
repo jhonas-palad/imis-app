@@ -2,7 +2,7 @@ import { Box,Button, Text,HStack,  ScrollView, Pressable, Flex, Spacer, Badge, I
 import {useNavigation} from '@react-navigation/native';
 import Header from './headers/Header';
 import ServiceCategories from './ServiceCategories';
-import { categoryData } from '../data/category';
+import { services } from '../data/category';
 import React from 'react';
 
 
@@ -12,7 +12,7 @@ const HomeView: React.FC = () => {
     // const {height, width} = useWindowDimensions();
     const navigation = useNavigation();
     const [categoryLabel, setCategoryLabel] = useState("");
-    const [data] = useState([...categoryData]);
+    const [data] = useState([...services]);
     useEffect(()=> {
         navigation.setOptions(({
             header: ()=> {
@@ -21,7 +21,7 @@ const HomeView: React.FC = () => {
         }))
     }, [])
     useEffect(()=> {
-        setCategoryLabel(categoryData[0]?.label);
+        setCategoryLabel(services[0]?.label);
     }, []);
     useEffect(() => {
         console.log(categoryLabel);
