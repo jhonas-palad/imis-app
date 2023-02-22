@@ -5,51 +5,66 @@ import React, {useEffect, useState} from 'react';
 import { ServiceNavigationProp, ServiceRouteProp } from '../navigation';
 import { services, Service } from '../data/category';
 import ServiceDetailHeader from './headers/ServiceDetailHeader';
-import ServiceCategories from './ServiceCategories';
 import { makeID } from '../utils/uid';
 import {Feather} from '@expo/vector-icons';
-
-
-
 
 const ServiceDetails: React.FC = () => {
     const navigation = useNavigation<ServiceNavigationProp>();
     const route = useRoute<ServiceRouteProp>();
-    const [packages, setPackages] = useState([]);
     const [serviceDetails, setServiceDetails] = useState<Omit<Service, 'icon' >>({
         id: '',
         label: '',
         categories: [],
         packages: []
     });
+    const [packages, setPackages] = useState([]);
     const [packageCategories, setPackageCategories] = useState([]);
+    const [currentCategory, setCurrentCategory] = useState("");
     
     useEffect(()=>{
         navigation.setOptions({
             headerShown:false
         })
     }, []);
-
+    
     useEffect(()=> {
         const service = services.filter(value => value.id === route.params.serviceId)[0];
         if(!(service.categories.find((item)=> item.categoryName === 'All'))){
             service.categories = [{id: 'a0482a93-8790-aeea287f08a2', categoryName: 'All'},...service.categories]
+            setCurrentCategory('All');
         }
+        // Initialize each package qty to 0
+        const _packages = service.packages.map((item)=> ({...item, qty: 0}))
+        console.log(_packages);
         setServiceDetails((prevDetails)=> ({...service}));
-        setPackageCategories([...service.packages]);
+        setPackageCategories([..._packages]);
+        setPackages([..._packages]);
     }, [route]);
+    const findPackage = React.useCallback((packageId : string) => {
+        
+        console.log(packages.map(item =>  console.log(item)));
+    }, [packages]);
+    const [packageQuantities, setPackageQuantities] = useState([{
+        packageId: '',
+        packageQty: 0,
+    }]);
 
-    const handleCategoryFilter = React.useCallback((categoryId : string)=> {
-        console.log(categoryId);
-        if(categoryId === 'a0482a93-8790-aeea287f08a2'){
+    const handleCategoryFilter = React.useCallback((category)=> {
+
+        const {id, categoryName} = category; 
+        if(id === 'a0482a93-8790-aeea287f08a2'){
             setPackageCategories([...serviceDetails.packages])
         }
         else{
-            setPackageCategories([...serviceDetails.packages.filter( item => item.categories.includes(categoryId))])
+            setPackageCategories([...serviceDetails.packages.filter( item => item.categories.includes(id))])
         }
+        setCurrentCategory(categoryName)
     }, [serviceDetails]);
 
-
+    const handlePackageQty = React.useCallback((packageId : string)=>{
+        const packageQty = findPackage(packageId);
+        console.log(packageQty);
+    }, []);
     return (
         <Box safeAreaTop flex={1} >
             <ServiceDetailHeader serviceName={serviceDetails.label} navigation={navigation}/>
@@ -65,7 +80,7 @@ const ServiceDetails: React.FC = () => {
                         renderItem={
                             ({item, index})=>{
                                 return(
-                                    <Pressable key={item.id} onPress={()=>handleCategoryFilter(item.id)} marginLeft={index === 0 ? 5: 0} marginRight={5} rounded={12} paddingX={6} paddingY={2} bg="orange.400">
+                                    <Pressable key={item.id} onPress={()=>handleCategoryFilter(item)} marginLeft={index === 0 ? 5: 0} marginRight={5} rounded={12} paddingX={6} paddingY={2} bg="orange.400">
                                         <Text fontWeight="600" fontSize="md">{item.categoryName}</Text>
                                     </Pressable>
                                 )
@@ -73,7 +88,7 @@ const ServiceDetails: React.FC = () => {
                         }
                     /> 
                 </Box>
-                <Text fontSize="lg" fontWeight="600" ml={3}>Bedroom</Text>
+                <Text fontSize="lg" fontWeight="600" ml={3}>{currentCategory}</Text>
                 {
                     packageCategories.map((_package)=>{
                         return (
@@ -83,9 +98,9 @@ const ServiceDetails: React.FC = () => {
                                         <Image rounded={8} size="xl" alt="women_clean" resizeMode="contain" source={require('../../assets/images/women_bucket.png')} />
                                     </Box>
                                     <HStack alignSelf="stretch" alignItems="center" justifyContent="space-between">
-                                        <IconButton bg="darkBlue.200" rounded={12} icon={<Icon as={Feather} color="coolGray.100" name="minus" size="md"/>} />
-                                            <Text>0</Text>
-                                        <IconButton bg="darkBlue.200" rounded={12} icon={<Icon as={Feather} name="plus" color="coolGray.100" size="md"/>} />
+                                        <IconButton bg="darkBlue.200" onPress={()=> handlePackageQty(_package.id)} rounded={12} icon={<Icon as={Feather} color="coolGray.100" name="minus" size="md"/>} />
+                                            <Text>{}</Text>
+                                        <IconButton bg="darkBlue.200" onPress={()=> handlePackageQty(_package.id)} rounded={12} icon={<Icon as={Feather} name="plus" color="coolGray.100" size="md"/>} />
                                     </HStack>
                                 </Center>
                                 
