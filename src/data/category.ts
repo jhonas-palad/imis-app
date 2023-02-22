@@ -1,7 +1,7 @@
 import { makeID } from "../utils/uid";
 import { Ionicons, MaterialIcons, MaterialCommunityIcons  } from '@expo/vector-icons';
 
-const allIDs = (arr : any[]) => [...arr.map(i => i?.id)];
+const allCategory = (arr : any[]) => [...arr.map(i => i?.categoryName)];
 
 type IconProp = {
     asIcon: any,
@@ -125,7 +125,7 @@ export const services: Array<Service> = [
                 ],
                 packageRate: 200,
                 categories: [
-                    cleaningCategories[1].id
+                    cleaningCategories[1].categoryName
                 ]
             },
             {
@@ -135,7 +135,7 @@ export const services: Array<Service> = [
                     'Basic cleaning of floor.'
                 ],
                 packageRate: 500,
-                categories: allIDs(cleaningCategories)
+                categories: allCategory(cleaningCategories)
                 
             },
             {
@@ -143,7 +143,7 @@ export const services: Array<Service> = [
                 packageName: 'Disinfect Spraying',
                 packageDescription: ['Wiping of all surfaces with disinfectant', '30 Mins per order', 'Best Seller'],
                 packageRate: 600,
-                categories: allIDs(cleaningCategories)
+                categories: allCategory(cleaningCategories)
                 
             },
             {
@@ -154,7 +154,7 @@ export const services: Array<Service> = [
                     'Cleaning of all flooring.'
                 ],
                 packageRate: 500,
-                categories: [cleaningCategories[3].id]
+                categories: [cleaningCategories[3].categoryName]
             },
         ]
     },
@@ -176,7 +176,7 @@ export const services: Array<Service> = [
                 ],
                 packageRate: 800,
                 categories: [
-                    beautyCareCategories[1].id
+                    beautyCareCategories[1].categoryName
                 ],
                 
             },
@@ -189,7 +189,7 @@ export const services: Array<Service> = [
                 ],
                 packageRate: 800,
                 categories: [
-                    beautyCareCategories[1].id
+                    beautyCareCategories[1].categoryName
                 ],
                 
             },
@@ -214,7 +214,7 @@ export const services: Array<Service> = [
                 ],
                 packageRate: 400,
                 categories: [
-                    hairCutCategories[0].id
+                    hairCutCategories[0].categoryName
                 ],
             },
             {
@@ -225,7 +225,7 @@ export const services: Array<Service> = [
                     'Groom, trim, or sculpt facial hair'
                 ],
                 packageRate: 400,
-                categories: allIDs(hairCutCategories),
+                categories: allCategory(hairCutCategories),
             },
         ]
 
@@ -247,7 +247,7 @@ export const services: Array<Service> = [
                     'Groom your dog with no hassle',
                 ],
                 packageRate: 400,
-                categories: [petCareCategories[0].id]
+                categories: [petCareCategories[0].categoryName]
             }
         ]
     },
@@ -268,7 +268,7 @@ export const services: Array<Service> = [
                     'Groom your dog with no hassle',
                 ],
                 packageRate: 400,
-                categories: [petCareCategories[0].id]
+                categories: [petCareCategories[0].categoryName]
             }
         ]
 
