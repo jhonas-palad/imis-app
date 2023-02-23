@@ -3,13 +3,13 @@ import { RouteProp } from '@react-navigation/native';
 
 type HomeStackParamList = {
     HomeView: undefined;
-    ServiceDetails: {
+    Services: {
         serviceId : string
     }
 }
 
-type ServiceNavigationProp = StackNavigationProp<HomeStackParamList, 'ServiceDetails'>;
-type ServiceRouteProp = RouteProp<HomeStackParamList, 'ServiceDetails'>;
+type ServiceNavigationProp = StackNavigationProp<HomeStackParamList, 'Services'>;
+type ServiceRouteProp = RouteProp<HomeStackParamList, 'Services'>;
 
 export {
     HomeStackParamList,

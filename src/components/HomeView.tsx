@@ -29,7 +29,7 @@ const HomeView: React.FC = () => {
     const categoryPress = useCallback((item: any, itemIndex: number) => {
         
         setCategoryLabel(item?.label);
-        navigation.navigate('ServiceDetails' as never, {serviceId: item?.id} as never);
+        navigation.navigate('Services' as never, {screen: 'Details',params: {serviceId: item?.id}} as never);
     }, []);
 
     return (
@@ -83,7 +83,6 @@ const HomeView: React.FC = () => {
                             <Text fontSize={10} color="coolGray.800">
                                 1 day left
                             </Text>
-                            
                         </HStack>
                         <Text color="coolGray.800" mt="3" fontWeight="medium" fontSize="xl">
                             {categoryLabel}
@@ -158,12 +157,10 @@ const HomeView: React.FC = () => {
                         </Flex>
                     </Box>
                 </Pressable>
-                
             </Box>
         </ScrollView>
         <Button _pressed={{bg:'orange.500'}} position="absolute" shadow={3} rounded="full" bottom={5} bg="orange.600" alignSelf="center" onPress={()=>console.log("QWE")}>
             <Text color="coolGray.50" fontWeight={500}>Map</Text>
-            {/* <Icon as={Ionicons} name="arrow-forward-circle-outline" size="xl"/> */}
         </Button>
         </>
     )

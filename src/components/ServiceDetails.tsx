@@ -8,8 +8,11 @@ import ServiceDetailHeader from './headers/ServiceDetailHeader';
 import { makeID } from '../utils/uid';
 import {Feather} from '@expo/vector-icons';
 import {useWindowDimensions} from 'react-native';
+import { useServiceOrder} from '../context';
+
 
 const ServiceDetails: React.FC = () => {
+    const { serviceOrderDetails, setServiceOrderDetails} = useServiceOrder();
     const { width} = useWindowDimensions();
     const navigation = useNavigation<ServiceNavigationProp>();
     const route = useRoute<ServiceRouteProp>();
@@ -145,7 +148,9 @@ const ServiceDetails: React.FC = () => {
             </HStack>
             <Button _pressed={{
                 opacity: 0.8
-            }} bg="orange.600" rounded={0}>
+            }} bg="orange.600" rounded={0}
+                onPress={() => {setServiceOrderDetails({myName: 'NameEEE'}); navigation.navigate('Date' as never)}}
+            >
                 <Text color="coolGray.50" fontWeight={700}>
                     Proceed
                 </Text>
