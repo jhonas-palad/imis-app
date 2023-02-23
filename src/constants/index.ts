@@ -35,7 +35,15 @@ const phyxiColorTheme = {
     }
   }
 
+const phyxiComponentsTheme = {
+  Text: {
+    baseStyle : {
+      color: 'darkBlue.800'
+    }
+  }
+}
 export {
     phyxiColorTheme,
-    phyxiFontTheme
+    phyxiFontTheme,
+    phyxiComponentsTheme
   }

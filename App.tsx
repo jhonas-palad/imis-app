@@ -4,7 +4,7 @@ import React from "react";
 import {RootNavigator} from './src/navigation/RootNavigator';
 import { NativeBaseProvider, Box, extendTheme } from "native-base";
 import { SafeAreaProvider } from 'react-native-safe-area-context'
-import {phyxiColorTheme, phyxiFontTheme} from './src/constants';
+import {phyxiColorTheme, phyxiComponentsTheme, phyxiFontTheme} from './src/constants';
 
 import { useCallback } from 'react';
 import { useFonts } from 'expo-font';
@@ -24,7 +24,8 @@ export default function App() {
   const theme = extendTheme({ 
     colors : phyxiColorTheme,
     fontConfig: phyxiFontTheme.fontConfig,
-    fonts: phyxiFontTheme.fonts
+    fonts: phyxiFontTheme.fonts,
+    components: phyxiComponentsTheme
   })
 
   React.useEffect(()=> {

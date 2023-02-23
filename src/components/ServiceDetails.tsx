@@ -1,5 +1,5 @@
 import { MotiView } from 'moti';
-import {Box,Center, Text, FlatList, ScrollView, Pressable, Image, Icon, Heading, HStack, IconButton, Badge, Divider} from 'native-base';
+import {Box,Center, Text, FlatList, ScrollView, Pressable, Image, Icon, Button, HStack, IconButton, Badge, Divider} from 'native-base';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
 import { ServiceNavigationProp, ServiceRouteProp } from '../navigation';
@@ -42,7 +42,6 @@ const ServiceDetails: React.FC = () => {
         const _package = packages.find(p => p.id === packageId);
         let {qty} = _package;
         if(add){
-            console.log('Package')
             ++qty; 
         }else{
             (qty > 0) && qty--
@@ -52,27 +51,25 @@ const ServiceDetails: React.FC = () => {
         setPackages([...updatedPackages]);
     }, [packages]);
     return (
-        <Box safeAreaTop flex={1} >
+        <Box bg="coolGray.100" safeAreaTop flex={1} >
             <ServiceDetailHeader serviceName={serviceDetails.label} navigation={navigation}/>
             <ScrollView
                 stickyHeaderIndices={[0]}
             >
-                <Box mb={3} justifyContent="center" w="full" bg="coolGray.100" borderBottomWidth={1} borderBottomColor="coolGray.200">
+                <Box mb={3} shadow={1} justifyContent="center" w="full" bg="coolGray.100">
                     <FlatList
                         horizontal
+                        
                         data={serviceDetails.categories}
                         showsHorizontalScrollIndicator={false}
                         keyExtractor={(category)=> category.id}
                         renderItem={
                             ({item, index})=>{
-                                const categoryLen = serviceDetails.categories.length;
                                 return(
                                     <>
-
                                         <Pressable 
-                                            width={width /4}
-                                            paddingX={3}
-                                            paddingY={1}
+                                            width={width / 4}
+                                            padding={3}
                                             key={item.id} 
                                             onPress={()=> {setCurrentCategory(item.categoryName); setCategoryIndex(index);}}  
                                             _pressed={{
@@ -124,23 +121,37 @@ const ServiceDetails: React.FC = () => {
                                                             )
                                                         })
                                                     }
-                                                </Box>
+                                            </Box>
                                         </Box>
         
                                     </Pressable>
                                 );
                             }
-                            else{
-                                return <Text>There are no available packages at this moment</Text>
-                            }
+                            
                         
                     }) )
                     
                 }
             </ScrollView>
             <Box>
-                
+
+            <HStack shadow={2} padding={5} bg="coolGray.50" alignItems="center" justifyContent="space-between">
+                <Text fontWeight="bold">
+                    Total cost
+                </Text>
+                <Text>
+                    $100
+                </Text>
+            </HStack>
+            <Button _pressed={{
+                opacity: 0.8
+            }} bg="orange.600" rounded={0}>
+                <Text color="coolGray.50" fontWeight={700}>
+                    Proceed
+                </Text>
+            </Button>
             </Box>
+
         </Box>
     )
 }

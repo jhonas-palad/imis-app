@@ -9,7 +9,7 @@ type ServiceDetailHeader = {
 const ServiceDetailHeader: React.FC<ServiceDetailHeader> = ({serviceName, navigation}) => {
 
     return (
-        <HStack paddingX={3} justifyContent="space-between" alignItems="center">
+        <HStack paddingX={3} bg="coolGray.100" justifyContent="space-between" alignItems="center">
             <IconButton onPress={()=>navigation.goBack()} _pressed={{bg:'transparent', opacity: 0.5}} 
                 icon={<Icon as={Feather} name="arrow-left" color="orange.500"  />}
             />
