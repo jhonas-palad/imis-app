@@ -29,7 +29,7 @@ type CategoryProps = {
 
 export type Service = {
     id: string,
-    label: string,
+    type: string,
     icon: IconProp,
     categories: CategoryProps[],
     packages: PackageProps[]
@@ -109,7 +109,7 @@ const maintenanceCategories = [
 export const services: Array<Service> = [
     {
         id: 'af3fe3c9-cba1-4d1c-8c7b-374226a1231c',
-        label: 'Cleaning',
+        type: 'Cleaning',
         icon: {
             asIcon: MaterialCommunityIcons,
             name: 'broom',
@@ -160,7 +160,7 @@ export const services: Array<Service> = [
     },
     {
         id: '1f9daa4e-3a3a-43d7-97aa-ab3fc7044499',
-        label: 'Beauty Service',
+        type: 'Beauty Service',
         icon: {
             asIcon: MaterialCommunityIcons,
             name: 'face-woman-shimmer',
@@ -197,7 +197,7 @@ export const services: Array<Service> = [
     },
     {
         id: 'ce16b353-469b-4361-8d28-abf9be8f765a',
-        label: 'Haircut',
+        type: 'Haircut',
         icon: {
             asIcon: Ionicons,
             name: 'cut',
@@ -232,10 +232,10 @@ export const services: Array<Service> = [
     },
     {
         id: '3e67d776-143b-48b7-aac7-52048c4300c5',
-        label: 'Maintenance',
+        type: 'Maintenance',
         icon: {
             asIcon: MaterialIcons,
-            name: 'home-repaire-service',
+            name: 'home-repair-service',
             color: '#facc15'
         },
         categories: [],
@@ -253,7 +253,7 @@ export const services: Array<Service> = [
     },
     {
         id: 'cac96fca-40ed-477d-9de0-c624d29d0504',
-        label: 'Pet care ',
+        type: 'Pet care ',
         icon: {
             asIcon: MaterialIcons,
             name: 'pets',

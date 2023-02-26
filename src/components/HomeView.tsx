@@ -1,4 +1,4 @@
-import { Box,Button, Text,HStack,  ScrollView, Pressable, Flex, Spacer, Badge, Image, Heading, Divider, IconButton, Icon } from 'native-base';
+import { Box,Button, Text,HStack,  ScrollView, Pressable, Flex, Spacer, Badge, Image, Heading, Divider, IconButton, Icon, Center } from 'native-base';
 import {useNavigation} from '@react-navigation/native';
 import Header from './headers/Header';
 import ServiceCategories from './ServiceCategories';
@@ -17,11 +17,12 @@ const HomeView: React.FC = () => {
         navigation.setOptions(({
             header: ()=> {
                 return <Header/>
-            }
+            },
+            headerShown: false
         }))
     }, [])
     useEffect(()=> {
-        setCategoryLabel(services[0]?.label);
+        setCategoryLabel(services[0]?.type);
     }, []);
     useEffect(() => {
         console.log(categoryLabel);
@@ -33,11 +34,21 @@ const HomeView: React.FC = () => {
     }, []);
 
     return (
-        <>
+        <Box flex={1} safeArea>
         <ScrollView flex={1}
-            stickyHeaderIndices={[2]}
+            
             bg="coolGray.100"
-        >   
+        >  
+            <Center>
+                <Pressable onPress={()=> navigation.navigate('MapLocation' as never)} bg="amber.400" _pressed={{opacity: 0.5}}>
+                        <Text>
+                            Location
+                        </Text>
+                        <Text numberOfLines={1}>
+                            122 Sala Tanauan City, Batangas, Philippines
+                        </Text>
+                </Pressable>
+            </Center> 
             <Box flexDir="row" alignItems="center">
                 <Box ml={5} flex={0.5}>
                     <Heading color="orange.600">
@@ -162,7 +173,7 @@ const HomeView: React.FC = () => {
         <Button _pressed={{bg:'orange.500'}} position="absolute" shadow={3} rounded="full" bottom={5} bg="orange.600" alignSelf="center" onPress={()=>console.log("QWE")}>
             <Text color="coolGray.50" fontWeight={500}>Map</Text>
         </Button>
-        </>
+        </Box>
     )
 }
 

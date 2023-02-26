@@ -3,10 +3,12 @@ import ServiceCategories from "./ServiceCategories";
 import HomeView from "./HomeView";
 import ServiceDetails from "./ServiceDetails";
 import ServiceDate from "./ServiceDate";
+import MapLocation from "./MapLocation";
 export {
     Header,
     ServiceCategories,
     HomeView,
     ServiceDetails,
-    ServiceDate
+    ServiceDate,
+    MapLocation,
 }

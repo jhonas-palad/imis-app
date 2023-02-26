@@ -5,7 +5,8 @@ type HomeStackParamList = {
     HomeView: undefined;
     Services: {
         serviceId : string
-    }
+    };
+    MapLocation: undefined;
 }
 
 type ServiceNavigationProp = StackNavigationProp<HomeStackParamList, 'Services'>;
