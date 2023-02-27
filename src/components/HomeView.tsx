@@ -2,23 +2,26 @@ import { Box,Button, Text,HStack,  ScrollView, Pressable, Flex, Spacer, Badge, I
 import {useNavigation} from '@react-navigation/native';
 import Header from './headers/Header';
 import ServiceCategories from './ServiceCategories';
+import { Easing } from 'react-native-reanimated';
 import { services } from '../data/category';
+import { phyxiColorTheme } from '../constants';
 import React from 'react';
-
+import { useWindowDimensions } from 'react-native';
+import { MotiView } from 'moti';
 
 const {useEffect, useState, useCallback} = React;
 
 const HomeView: React.FC = () => {
-    // const {height, width} = useWindowDimensions();
+    const {height, width} = useWindowDimensions();
     const navigation = useNavigation();
     const [categoryLabel, setCategoryLabel] = useState("");
     const [data] = useState([...services]);
+    const [index, setIndex] = useState(null);
     useEffect(()=> {
         navigation.setOptions(({
             header: ()=> {
                 return <Header/>
             },
-            headerShown: false
         }))
     }, [])
     useEffect(()=> {
@@ -34,21 +37,12 @@ const HomeView: React.FC = () => {
     }, []);
 
     return (
-        <Box flex={1} safeArea>
+        <Box flex={1}>
         <ScrollView flex={1}
             
             bg="coolGray.100"
         >  
-            <Center>
-                <Pressable onPress={()=> navigation.navigate('MapLocation' as never)} bg="amber.400" _pressed={{opacity: 0.5}}>
-                        <Text>
-                            Location
-                        </Text>
-                        <Text numberOfLines={1}>
-                            122 Sala Tanauan City, Batangas, Philippines
-                        </Text>
-                </Pressable>
-            </Center> 
+            
             <Box flexDir="row" alignItems="center">
                 <Box ml={5} flex={0.5}>
                     <Heading color="orange.600">
@@ -64,6 +58,16 @@ const HomeView: React.FC = () => {
                 </Box>
                 <Image flex={0.6} source={require('../../assets/images/cleaning_bucket1.png')} resizeMode='cover' size="2xl" alt="cleaning_bucket"/>
             </Box>
+            <Box px={5}>
+                <Pressable onPress={()=> navigation.navigate('MapLocation' as never)} bg="" _pressed={{opacity: 0.5}}>
+                        <Text>
+                            Location
+                        </Text>
+                        <Text numberOfLines={1}>
+                            122 Sala Tanauan City, Batangas
+                        </Text>
+                </Pressable>
+            </Box> 
             <Box flexDir="row" alignItems="center" justifyContent="space-between" mx={4} mb={3} >
 
                 <Text  fontWeight="bold" color="darkBlue.700" fontSize="20">
@@ -74,7 +78,42 @@ const HomeView: React.FC = () => {
                 </Button>
             </Box>
             <Box bg="coolGray.100" mb={3}>
-                <ServiceCategories categoryPress={categoryPress} data={data}/> 
+                {/* <ServiceCategories categoryPress={categoryPress} data={data}/>  */}
+
+                
+                <HStack flexWrap="wrap" alignItems="center" justifyContent="space-betweeen">
+                {
+                    data.map((item, itemIndex)=>{
+                        const {icon} = item;
+                        return (
+                            <Pressable w={width / 3} key={item.id} _pressed={{bg:"transparent", opacity:0.5 }} 
+                            overflow="hidden">
+                            <MotiView
+                                animate={{
+                                    
+                                    opacity: itemIndex === index ? 1 : 0.4,
+                                    
+                                }}
+                                transition={{
+                                    type: 'timing',
+                                    easing: Easing.linear,
+                                }}
+                                style={{
+                                    padding: 5,
+                                    alignItems: "center",
+                                    borderColor: phyxiColorTheme.brandPrimary[800],
+                                }}
+                            >
+                                <Icon as={icon.asIcon} name={icon.name} size="xl" color={icon.color}/>
+                                <Text fontWeight="600" fontSize="md" color="coolGray.500">
+                                    {item.type}
+                                </Text>
+                            </MotiView>
+                        </Pressable>
+                        )
+                    })
+                }
+                </HStack>
             </Box>
             <Text mx={4} mb={3} fontWeight="bold" color="darkBlue.700" fontSize="20">
                 Offers & discounts

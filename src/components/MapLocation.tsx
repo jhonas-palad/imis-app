@@ -1,13 +1,19 @@
-import {Box, Button, Center, Spinner} from 'native-base';
+import {Box, Button, Center, Spinner, Text} from 'native-base';
 import React, { useState, useEffect} from 'react';
-import MapView from 'react-native-maps';
+import MapView, {Region, Marker, Callout} from 'react-native-maps';
 import { useNavigation } from '@react-navigation/native';
 import * as Location from 'expo-location';
 
 
+
 const MapLocation = () => {
     const navigation = useNavigation();
-    const [location, setLocation] = useState({});
+    const [region, setRegion] = useState<Region>({
+        longitude: 0,
+        latitude: 0,
+        latitudeDelta: 0.005,
+        longitudeDelta: 0.007
+    });
     const [loading, setLoading] = useState(true);
     useEffect(()=>{
         navigation.setOptions({
@@ -24,12 +30,11 @@ const MapLocation = () => {
             }
             const {coords} = await Location.getCurrentPositionAsync({});
             
-            setLocation({
+            setRegion( prevState => ({
+                ...region,
                 latitude: coords.latitude,
                 longitude: coords.longitude,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
-            });
+            }));
             setLoading(false);
         })();
     }, [])
@@ -50,8 +55,12 @@ const MapLocation = () => {
                 Hello
             </Button>
             <MapView 
-                region={location}
-                style={{width: '100%', height: '100%'}}/>
+                region={region}
+                provider='google'
+                style={{width: '100%', height: '100%'}}
+            >
+                <Marker coordinate={region} />
+            </MapView>
         </Box>
     )
 }
