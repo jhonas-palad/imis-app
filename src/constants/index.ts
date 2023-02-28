@@ -26,12 +26,29 @@ const phyxiColorTheme = {
         700: {
           normal: 'Quicksand-Bold'
         }
+      },
+      Roboto: {
+        300: {
+          normal: "Roboto-Light",
+          italic: "Roboto-LightItalic",
+        },
+        400: {
+          normal: "Roboto-Regular",
+        },
+        500: {
+          normal: "Roboto-Medium",
+          italic: "Roboto-MediumItalic"
+        },
+        700: {
+          normal: "Roboto-Bold",
+          italic: "Roboto-BoldItalic"
+        }
       }
     },
     fonts : {
-      heading: "Quicksand",
-      body: "Quicksand",
-      mono: "Quicksand",
+      heading: "Roboto",
+      body: "Roboto",
+      mono: "Roboto",
     }
   }
 

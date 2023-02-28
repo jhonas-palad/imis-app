@@ -30,6 +30,9 @@ const HomeView: React.FC = () => {
     useEffect(() => {
         console.log(categoryLabel);
     }, [categoryLabel]);
+    const handleServicePress = useCallback(() => {
+        
+    }, []);
     const categoryPress = useCallback((item: any, itemIndex: number) => {
         
         setCategoryLabel(item?.label);
@@ -78,42 +81,7 @@ const HomeView: React.FC = () => {
                 </Button>
             </Box>
             <Box bg="coolGray.100" mb={3}>
-                {/* <ServiceCategories categoryPress={categoryPress} data={data}/>  */}
-
-                
-                <HStack flexWrap="wrap" alignItems="center" justifyContent="space-betweeen">
-                {
-                    data.map((item, itemIndex)=>{
-                        const {icon} = item;
-                        return (
-                            <Pressable w={width / 3} key={item.id} _pressed={{bg:"transparent", opacity:0.5 }} 
-                            overflow="hidden">
-                            <MotiView
-                                animate={{
-                                    
-                                    opacity: itemIndex === index ? 1 : 0.4,
-                                    
-                                }}
-                                transition={{
-                                    type: 'timing',
-                                    easing: Easing.linear,
-                                }}
-                                style={{
-                                    padding: 5,
-                                    alignItems: "center",
-                                    borderColor: phyxiColorTheme.brandPrimary[800],
-                                }}
-                            >
-                                <Icon as={icon.asIcon} name={icon.name} size="xl" color={icon.color}/>
-                                <Text fontWeight="600" fontSize="md" color="coolGray.500">
-                                    {item.type}
-                                </Text>
-                            </MotiView>
-                        </Pressable>
-                        )
-                    })
-                }
-                </HStack>
+                <ServiceCategories categoryPress={categoryPress} data={data}/>
             </Box>
             <Text mx={4} mb={3} fontWeight="bold" color="darkBlue.700" fontSize="20">
                 Offers & discounts

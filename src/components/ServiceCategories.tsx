@@ -1,9 +1,10 @@
 import React ,{ useEffect, useRef, useState } from 'react';
-import {FlatList, Pressable, Icon, Text} from 'native-base';
+import {FlatList, Pressable, Icon, Text, HStack} from 'native-base';
 import { MotiView } from 'moti';
 import { Easing } from 'react-native-reanimated';
 import { phyxiColorTheme } from '../constants';
 import { Service} from '../data/category';
+import { useWindowDimensions } from 'react-native';
 
 type ServiceProps = Omit<Service, 'categories' | 'packages'>;
 
@@ -14,6 +15,7 @@ type ServiceCategoriesProps = {
 }
 
 const ServiceCategories : React.FC<ServiceCategoriesProps> = ({categoryPress, data}) => {
+    const {width} = useWindowDimensions();
     const ref = useRef(null);
     const [index, setIndex] = useState(null);
 
@@ -30,17 +32,13 @@ const ServiceCategories : React.FC<ServiceCategoriesProps> = ({categoryPress, da
     };
 
     return (
-        <FlatList
-            ref={ref}
-            flexGrow={0}
-            data={data}
-            showsHorizontalScrollIndicator={false}
-            keyExtractor={(item) => item.id}
-            horizontal
-            renderItem={({item, index: itemIndex}) => {
-                const {icon} = item;
-                return (
-                        <Pressable onPress={() =>{handleServicePress(item, itemIndex)}} _pressed={{bg:"transparent", opacity:0.5 }} marginLeft={ itemIndex === 0 ? 3 : 0} marginRight={3}
+        <HStack alignItems="center"  flexWrap="wrap">
+            {
+                data.map((item, itemIndex) => {
+                    
+                    const {icon} = item
+                    return (
+                            <Pressable w={width / 3} key={item.id} onPress={()=>handleServicePress(item, itemIndex)} _pressed={{bg:"transparent", opacity:0.5 }} 
                             overflow="hidden">
                             <MotiView
                                 animate={{
@@ -65,9 +63,10 @@ const ServiceCategories : React.FC<ServiceCategoriesProps> = ({categoryPress, da
                             </MotiView>
                         </Pressable>
                     )
-                }
+
+                })
             }
-        />
+        </HStack>
     )
 };
 
