@@ -162,3 +162,23 @@ const ServiceDetails: React.FC = () => {
 }
 
 export default ServiceDetails
+
+
+type serviceDetail = {
+    service: {
+        type: string,
+        date: Date,
+        time: string
+    }
+    packages : [
+        {
+            name: string,
+            description: string,
+            
+        }
+    ],
+    totalCost: number;
+    selectedDate: Date;
+    totalHours: number;
+    location: string;
+}

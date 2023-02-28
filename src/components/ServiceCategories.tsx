@@ -1,5 +1,5 @@
 import React ,{ useEffect, useRef, useState } from 'react';
-import {FlatList, Pressable, Icon, Text, HStack} from 'native-base';
+import {Box, Pressable, Icon, Text, HStack, Center} from 'native-base';
 import { MotiView } from 'moti';
 import { Easing } from 'react-native-reanimated';
 import { phyxiColorTheme } from '../constants';
@@ -10,57 +10,30 @@ type ServiceProps = Omit<Service, 'categories' | 'packages'>;
 
 
 type ServiceCategoriesProps = {
-    categoryPress: (item: ServiceProps, itemIndex: number) => void;
+    categoryPress: (item: ServiceProps) => void;
     data: Array<ServiceProps> 
 }
 
 const ServiceCategories : React.FC<ServiceCategoriesProps> = ({categoryPress, data}) => {
     const {width} = useWindowDimensions();
-    const ref = useRef(null);
-    const [index, setIndex] = useState(null);
-
-    useEffect(() => {
-        ref.current?.scrollToIndex({
-            index,
-            animated: true,
-            viewPosition: 0.05
-        })
-    }, [index])
-    const handleServicePress = (item: ServiceProps, itemIndex : number) =>{
-        categoryPress(item, itemIndex);
-        setIndex(itemIndex);
-    };
-
     return (
-        <HStack alignItems="center"  flexWrap="wrap">
+        <HStack mx={2} alignItems="center" flexWrap="wrap">
             {
                 data.map((item, itemIndex) => {
-                    
+                    const itemsPerRow = 3.4;
                     const {icon} = item
+                    const addExtraPadding = itemIndex % itemsPerRow === 0 || itemIndex % itemsPerRow === 1;
+                    console.log(item.type, addExtraPadding, itemIndex)
                     return (
-                            <Pressable w={width / 3} key={item.id} onPress={()=>handleServicePress(item, itemIndex)} _pressed={{bg:"transparent", opacity:0.5 }} 
-                            overflow="hidden">
-                            <MotiView
-                                animate={{
-                                    
-                                    opacity: itemIndex === index ? 1 : 0.4,
-                                    
-                                }}
-                                transition={{
-                                    type: 'timing',
-                                    easing: Easing.linear,
-                                }}
-                                style={{
-                                    padding: 5,
-                                    alignItems: "center",
-                                    borderColor: phyxiColorTheme.brandPrimary[800],
-                                }}
-                            >
+                        <Pressable w={width / itemsPerRow} h="130" mx={1} px={1} key={item.id} justifyContent="flex-start"  alignItems="center" onPress={()=>categoryPress(item)} _pressed={{bg:"amber.100", opacity:0.5 }} 
+                        overflow="hidden" mb={2}>
+                            <Center w="full" _light={{bg: 'coolGray.100'}} rounded={12} _dark={{}} height="60%" mb={1}>
                                 <Icon as={icon.asIcon} name={icon.name} size="xl" color={icon.color}/>
-                                <Text fontWeight="600" fontSize="md" color="coolGray.500">
-                                    {item.type}
-                                </Text>
-                            </MotiView>
+                            </Center>
+                            <Text textAlign="center" numberOfLines={2} fontWeight="400" fontSize="sm" >
+                                {item.type}
+                            </Text>
+                            
                         </Pressable>
                     )
 

@@ -232,7 +232,7 @@ export const services: Array<Service> = [
     },
     {
         id: '3e67d776-143b-48b7-aac7-52048c4300c5',
-        type: 'Maintenance',
+        type: 'Maintenance and Home cleaning services and pest control',
         icon: {
             asIcon: MaterialIcons,
             name: 'home-repair-service',
@@ -251,27 +251,6 @@ export const services: Array<Service> = [
             }
         ]
     },
-    {
-        id: 'cac96fca-40ed-477d-9de0-c624d29d0504',
-        type: 'Pet care ',
-        icon: {
-            asIcon: MaterialIcons,
-            name: 'pets',
-            color: 'indigo.700'
-        },
-        categories: petCareCategories,
-        packages: [
-            {
-                id: 'f59d3eae-4990-4754-bddf-f755908904ff',
-                packageName: 'Dog grooming',
-                packageDescription: [
-                    'Groom your dog with no hassle',
-                ],
-                packageRate: 400,
-                categories: [petCareCategories[0].categoryName]
-            }
-        ]
-
-    }
+    
 
 ]
