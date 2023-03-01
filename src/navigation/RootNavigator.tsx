@@ -40,8 +40,8 @@ export const RootNavigator: React.FC = () => {
                         }
                         return <Icon as={Ionicons} name={iconName} size={size} color={color} />;
                     },
-                    tabBarActiveTintColor: 'brandPrimary.900',
-                    tabBarInactiveTintColor: 'brandPrimary.900',
+                    tabBarActiveTintColor: 'darkBlue.800',
+                    tabBarInactiveTintColor: 'darkBlue.800',
                     headerShown: false
                 })}
             >

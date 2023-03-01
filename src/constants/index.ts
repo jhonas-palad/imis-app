@@ -41,6 +41,34 @@ const phyxiComponentsTheme = {
   Text: {
     baseStyle : {
       color: 'darkBlue.800'
+    },
+    variants: {
+      light:{
+        fontSize: 'sm',
+        color: 'coolGray.400'
+      }
+    }
+  },
+  Pressable: {
+    baseStyle : {
+      _pressed: {
+        bg:'none',
+        opacity: 0.5
+      },
+      _light: {
+
+      },
+      _dark:{
+
+      }
+    }
+  },
+  Box : {
+    variants: {
+      base : {
+        flex: 1,
+        safeArea: true
+      }
     }
   }
 }

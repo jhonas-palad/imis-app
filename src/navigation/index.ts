@@ -7,6 +7,7 @@ type HomeStackParamList = {
         serviceId : string
     };
     MapLocation: undefined;
+    ServiceSearch: undefined;
 }
 
 type ServiceNavigationProp = StackNavigationProp<HomeStackParamList, 'Services'>;

@@ -4,6 +4,7 @@ import HomeView from "./HomeView";
 import ServiceDetails from "./ServiceDetails";
 import ServiceDate from "./ServiceDate";
 import MapLocation from "./MapLocation";
+import ServiceSearchView from "./ServiceSearchView";
 export {
     Header,
     ServiceCategories,
@@ -11,4 +12,5 @@ export {
     ServiceDetails,
     ServiceDate,
     MapLocation,
+    ServiceSearchView
 }

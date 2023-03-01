@@ -55,7 +55,7 @@ const ServiceDetails: React.FC = () => {
     }, [packages]);
     return (
         <Box bg="coolGray.100" safeAreaTop flex={1} >
-            <ServiceDetailHeader serviceName={serviceDetails.label} navigation={navigation}/>
+            <ServiceDetailHeader serviceName={serviceDetails.type} navigation={navigation}/>
             <ScrollView
                 stickyHeaderIndices={[0]}
             >

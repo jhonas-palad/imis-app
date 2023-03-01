@@ -8,6 +8,7 @@ import { phyxiColorTheme } from '../constants';
 import React from 'react';
 import { useWindowDimensions } from 'react-native';
 import { MotiView } from 'moti';
+import { Feather } from '@expo/vector-icons';
 
 const {useEffect, useState, useCallback} = React;
 
@@ -26,7 +27,6 @@ const HomeView: React.FC = () => {
     const categoryPress = useCallback((item: any) => {
         navigation.navigate('Services' as never, {screen: 'Details', params: {serviceId: item?.id}} as never);
     }, []);
-
     return (
         <Box flex={1} >
             <ScrollView flex={1}
@@ -54,8 +54,8 @@ const HomeView: React.FC = () => {
                     </Box>
                     <Image flex={0.6} source={require('../../assets/images/cleaning_bucket1.png')} resizeMode='cover' size="2xl" alt="cleaning_bucket"/>
                 </Box>
-                <Box px={5}>
-                    <Pressable onPress={()=> navigation.navigate('MapLocation' as never)} bg="" _pressed={{opacity: 0.5}}>
+                <Box mb={3} px={5}>
+                    <Pressable onPress={()=> navigation.navigate('MapLocation' as never)} _pressed={{opacity: 0.5}}>
                             <Text>
                                 Location
                             </Text>
@@ -64,6 +64,14 @@ const HomeView: React.FC = () => {
                             </Text>
                     </Pressable>
                 </Box> 
+                <Box mb={3} marginX={3}>
+                    <Pressable flexDir="row" onPress={()=>{navigation.navigate('ServiceSearch' as never)}} _light={{bg:'white'}} alignItems="center" borderWidth={1} borderColor="coolGray.300" rounded={10} paddingY={2} paddingX={3}>
+                        <Icon as={Feather} color="coolGray.400" name="search" size="md"/>
+                        <Text ml={2} variant="light" fontSize="md">
+                            Search for a service
+                        </Text>
+                    </Pressable>
+                </Box>
                 <Box flexDir="row" alignItems="center" justifyContent="space-between" mx={4} mb={3} >
 
                     <Text  fontWeight="bold" color="darkBlue.700" fontSize="20">
@@ -77,9 +85,6 @@ const HomeView: React.FC = () => {
                     <ServiceCategories categoryPress={categoryPress} data={data}/>
                 </Box>
             </ScrollView>
-            <Button _pressed={{bg:'orange.500'}} position="absolute" shadow={3} rounded="full" bottom={5} bg="orange.600" alignSelf="center" onPress={()=>console.log("QWE")}>
-                <Text color="coolGray.50" fontWeight={500}>Map</Text>
-            </Button>
         </Box>
     )
 }
