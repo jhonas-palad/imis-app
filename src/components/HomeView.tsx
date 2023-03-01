@@ -18,6 +18,7 @@ const HomeView: React.FC = () => {
     const [data] = useState([...services]);
     useEffect(()=> {
         navigation.setOptions(({
+            headerShown:true,
             header: ()=> {
                 return <Header/>
             },

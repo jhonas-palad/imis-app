@@ -5,6 +5,7 @@ import ServiceDetails from "./ServiceDetails";
 import ServiceDate from "./ServiceDate";
 import MapLocation from "./MapLocation";
 import ServiceSearchView from "./ServiceSearchView";
+import BackButton from "./BackButton";
 export {
     Header,
     ServiceCategories,
@@ -12,5 +13,6 @@ export {
     ServiceDetails,
     ServiceDate,
     MapLocation,
-    ServiceSearchView
+    ServiceSearchView,
+    BackButton,
 }

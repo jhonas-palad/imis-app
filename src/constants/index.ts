@@ -67,7 +67,14 @@ const phyxiComponentsTheme = {
     variants: {
       base : {
         flex: 1,
-        safeArea: true
+        safeAreaTop: true,
+        safeAreaX: true,
+        _light:{
+          bg: 'white'
+        },
+        _dark:{
+          bg: 'coolGray.800'
+        }
       }
     }
   }
