@@ -9,8 +9,8 @@ type CloseButtonProps = {
 }
 const CloseButton: React.FC<CloseButtonProps> = ({_style, onPress}) => {
   return (
-    <IconButton onPress={()=>onPress()} rounded="full" alignItems="center" justifyContent="center" p={2} bg="orange.600"  _pressed={{bg:'transparent', opacity: 0.5}}  {..._style} 
-        icon={<Icon as={AntDesign} name="close" size="sm" color="coolGray.50" />}
+    <IconButton onPress={()=>onPress()} alignSelf="flex-start" rounded="full" alignItems="center" justifyContent="center" p={2}  _pressed={{bg:'transparent', opacity: 0.5}}  {..._style} 
+        icon={<Icon as={AntDesign} name="close" size="sm" color="orange.700" />}
     />
   )
 }

@@ -1,5 +1,5 @@
 import { View, Modal, StatusBar } from 'react-native';
-import {Box, Button, HStack, Text} from 'native-base';
+import {Box, Button, Input, HStack, Text} from 'native-base';
 import CloseButton from '../components/CloseButton'; 
 import React from 'react'
 
@@ -22,16 +22,15 @@ const LoginScreen: React.FC<LoginProps> = ({modalVisible, setModalVisible}) => {
                 }}>
                 <Box variant="base">
                     {/* Modal Contents */}
-                    <HStack mt={5} m={2} bg="amber.100" justifyContent="space-between" alignItems="center" >
-                        <CloseButton _style={{alignSelf: 'flex-start'}} onPress={()=> setModalVisible(false)}/> 
-                        <Box>
-                            
-                            <Text>
-                                Login
-                            </Text>
-                        </Box>
+                    <HStack mt={5} m={2} justifyContent="center" alignItems="center">
+                        <CloseButton _style={{position:'absolute', left:2}} onPress={()=>{setModalVisible(false)}}/>
+                        <Text fontWeight="700" fontSize="xl">
+                            Login
+                        </Text>
                     </HStack>
-                    
+                    <Box>
+                        <Input/>
+                    </Box>
                 </Box>
             </Modal>
         </>
