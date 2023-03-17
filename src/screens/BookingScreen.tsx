@@ -1,22 +1,26 @@
-import { View, Text, useWindowDimensions } from 'react-native'
-import {Box} from 'native-base';
+import { Box, Text, Button } from 'native-base';
 import React from 'react'
+import Information from '../components/Information';
 
-const BookingScreen = () => {
-    const {height, width} = useWindowDimensions();
-    const [viewLayout, setViewLayout] = React.useState(null);
-    const topEdge = viewLayout?.y - height + viewLayout?.height;
-    React.useEffect(()=>{
-        console.log(viewLayout);
-        console.log(topEdge);
-    }, [viewLayout]);
-    const handleOnLayout = (e) => {
-        setViewLayout(e.nativeEvent.layout);
-    }
+const BookingScreen: React.FC = () => {
   return (
-    <Box flex={1} position="absolute" bg="blue.500" top={50} onLayout={handleOnLayout}>
-      <Text>BookingScreen</Text>
-    </Box>
+    <Information 
+        imageSrc={require('../../assets/images/auth_icons/booking.png')}
+    >
+        <Text textAlign="center" fontWeight="700" fontSize="lg" m={5}>
+                        Login to view your bookings
+                </Text>
+                <Button _text={{
+                    fontSize: 'md',
+                    fontWeight: '700'
+                }} 
+                mx={5} 
+                alignSelf="stretch" 
+                bg="orange.600"
+                rounded={12}>
+                        Login
+                </Button>
+    </Information>
   )
 }
 

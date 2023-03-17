@@ -3,7 +3,7 @@ import React, { useState, useEffect} from 'react';
 import MapView, {Region, Marker, Callout} from 'react-native-maps';
 import { useNavigation } from '@react-navigation/native';
 import * as Location from 'expo-location';
-
+import { StatusBar } from 'native-base';
 
 
 const MapLocation = () => {
@@ -41,27 +41,34 @@ const MapLocation = () => {
     
     if(loading){
         return (
-            <Center flex={1} >
-                <Spinner size='sm'/>
-            </Center>
+            <>
+                <StatusBar barStyle='light-content'/>
+                <Center flex={1} >
+                    <Spinner size='sm'/>
+                </Center>
+            </>
+            
         )
         
     }
 
     return (
-
-        <Box flex={1}>
-            <Button position="absolute" rounded="full" zIndex="4" top={5} left={0} right={0} marginX={3}> 
-                Hello
-            </Button>
-            <MapView 
-                region={region}
-                provider='google'
-                style={{width: '100%', height: '100%'}}
-            >
-                <Marker coordinate={region} />
-            </MapView>
-        </Box>
+        <>
+            <StatusBar barStyle='light-content'/>
+            <Box flex={1}>
+                <Button position="absolute" rounded="full" zIndex="4" top={5} left={0} right={0} marginX={3}> 
+                    Hello
+                </Button>
+                <MapView 
+                    region={region}
+                    provider='google'
+                    style={{width: '100%', height: '100%'}}
+                >
+                    <Marker coordinate={region} />
+                </MapView>
+            </Box>
+        </>
+        
     )
 }
 

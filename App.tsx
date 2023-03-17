@@ -9,6 +9,7 @@ import {phyxiColorTheme, phyxiComponentsTheme, phyxiFontTheme} from './src/const
 import { useCallback } from 'react';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+import { NavigationContainer } from '@react-navigation/native';
 
 
 const quickSandConfig = {
@@ -59,7 +60,9 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <NativeBaseProvider theme={theme}>
-        <RootNavigator/>
+        <NavigationContainer>
+          <RootNavigator/>
+        </NavigationContainer>
       </NativeBaseProvider>
     </SafeAreaProvider>
   );

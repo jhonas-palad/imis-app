@@ -69,13 +69,15 @@ const phyxiComponentsTheme = {
         flex: 1,
         safeAreaTop: true,
         safeAreaX: true,
-        _light:{
+        _light: {
           bg: 'white'
-        },
-        _dark:{
-          bg: 'coolGray.800'
         }
       }
+    }
+  },
+  Button: {
+    baseStyle: {
+      rounded: 12
     }
   }
 }

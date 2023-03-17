@@ -1,11 +1,15 @@
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, RouteProp } from "@react-navigation/native";
+import { StackScreenProps } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {Icon} from 'native-base';
 import {Ionicons} from '@expo/vector-icons';
 import ExampleScreen from '../screens/ExampleScreen';
 import BookingScreen from '../screens/BookingScreen';
-import HomeScreen from '../screens/HomeScreen';
-
+import React from 'react'
+import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
+import HomeNavigator from "./HomeNavigator";
+import UserScreen from "../screens/UserScreen";
+import ChatScreen from "../screens/ChatScreen";
 type RootStackParamList = {
     Home: undefined;
     Bookings: { name: string };
@@ -15,9 +19,17 @@ type RootStackParamList = {
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
+const HIDDEN_TABS_NAME = [
+    'Services',
+    'ServiceSearch'
+]
+const getHiddenTabs = (route : RouteProp<RootStackParamList>) => {
+    const tabName = getFocusedRouteNameFromRoute(route);
+    return HIDDEN_TABS_NAME.includes(tabName) ? 'none' : 'flex';
+}
+
 export const RootNavigator: React.FC = () => {
     return (
-        <NavigationContainer>
             <Tab.Navigator 
                 initialRouteName="Home"
                 screenOptions={({ route }) => ({
@@ -42,15 +54,31 @@ export const RootNavigator: React.FC = () => {
                     },
                     tabBarActiveTintColor: 'darkBlue.800',
                     tabBarInactiveTintColor: 'darkBlue.800',
-                    headerShown: false
+                    headerShown: true,
                 })}
             >
-                <Tab.Screen name="Home" component={HomeScreen} />
-                <Tab.Screen name="Bookings" component={BookingScreen} />
-                <Tab.Screen name="Chat" component={ExampleScreen} />
-                <Tab.Screen name="User" component={ExampleScreen} />
+                <Tab.Screen 
+                    name="Home"
+                    options={({route}) => ({
+                        tabBarStyle:{
+                            position:'absolute',
+                            display: getHiddenTabs(route)
+                        },
+                        headerShown: false
+                    })}
+                    component={HomeNavigator} />
+                <Tab.Screen 
+                    name="Bookings"
+                    component={BookingScreen} />
+                <Tab.Screen 
+                    name="Chat" 
+                    component={ChatScreen} />
+                <Tab.Screen 
+                    name="User" 
+                    options={{
+                        title: "Profile"
+                    }} component={UserScreen} />
             </Tab.Navigator>
-        </NavigationContainer>
     ) 
 }
 

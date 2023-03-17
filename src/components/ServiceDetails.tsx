@@ -54,12 +54,14 @@ const ServiceDetails: React.FC = () => {
         setPackages([...updatedPackages]);
     }, [packages]);
     return (
-        <Box bg="coolGray.100" safeAreaTop flex={1} >
+        
+        <Box variant="base" safeAreaTop>
             <ServiceDetailHeader serviceName={serviceDetails.type} navigation={navigation}/>
             <ScrollView
+            flex={1}
                 stickyHeaderIndices={[0]}
             >
-                <Box mb={3} shadow={1} justifyContent="center" w="full" bg="coolGray.100">
+                <Box mb={3} shadow={1} justifyContent="center" w="full" _light={{bg:'white'}}>
                     <FlatList
                         horizontal
                         
@@ -136,25 +138,24 @@ const ServiceDetails: React.FC = () => {
                     
                 }
             </ScrollView>
-            <Box>
-
-            <HStack shadow={2} padding={5} bg="coolGray.50" alignItems="center" justifyContent="space-between">
-                <Text fontWeight="bold">
-                    Total cost
-                </Text>
-                <Text>
-                    $100
-                </Text>
-            </HStack>
-            <Button _pressed={{
-                opacity: 0.8
-            }} bg="orange.600" rounded={0}
-                onPress={() => {setServiceOrderDetails({myName: 'NameEEE'}); navigation.navigate('Date' as never)}}
-            >
-                <Text color="coolGray.50" fontWeight={700}>
-                    Proceed
-                </Text>
-            </Button>
+            <Box bottom={0} position="absolute" w="full">
+                <HStack shadow={2} padding={5} bg="coolGray.50" alignItems="center" justifyContent="space-between">
+                    <Text fontWeight="bold">
+                        Total cost
+                    </Text>
+                    <Text>
+                        $1200
+                    </Text>
+                </HStack>
+                <Button _pressed={{
+                    opacity: 0.8
+                }} bg="orange.600" rounded={0}
+                    onPress={() => {setServiceOrderDetails({myName: 'NameEEE'}); navigation.navigate('Date' as never)}}
+                >
+                    <Text color="coolGray.50" fontWeight={700}>
+                        Proceed
+                    </Text>
+                </Button>
             </Box>
 
         </Box>
