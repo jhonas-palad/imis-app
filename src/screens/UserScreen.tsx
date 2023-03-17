@@ -8,7 +8,7 @@ const UserScreen = () => {
         <Information 
             imageSrc={require('../../assets/images/auth_icons/user_auth.png')}
         >
-            <LoginScreen modalVisible={modalVisible}/>
+            <LoginScreen modalVisible={modalVisible} setModalVisible={setModalVisible}/>
             <Text fontWeight="700" fontSize="lg" m={5}>
                         You must be logged in to access this content.
                     </Text>
