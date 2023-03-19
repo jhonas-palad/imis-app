@@ -1,6 +1,5 @@
 import { HomeView, MapLocation, ServiceSearchView } from '../components';
 import React from 'react';
-import { useRoute, useNavigation } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ServiceNavigator from './ServiceDetails';
 import HomeScreen from '../screens/HomeScreen';
@@ -26,7 +25,11 @@ const HomeNavigator = () => {
         name="HomeScreen"
         component={HomeScreen} />
       <Stack.Screen name="Services" component={ServiceNavigator} />
-      <Stack.Screen name="MapLocation" component={MapLocation} />
+      <Stack.Screen name="MapLocation" 
+        options={{
+          presentation: 'modal'
+        }}
+        component={MapLocation} />
       <Stack.Screen name="ServiceSearch" component={ServiceSearchView} />
     </Stack.Navigator>
   )

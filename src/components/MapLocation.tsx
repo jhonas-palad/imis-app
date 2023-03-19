@@ -15,11 +15,6 @@ const MapLocation = () => {
         longitudeDelta: 0.007
     });
     const [loading, setLoading] = useState(true);
-    useEffect(()=>{
-        navigation.setOptions({
-            presentation: 'modal'
-        });
-    }, [navigation]);
 
     useEffect(()=>{
         (async ()=> {
