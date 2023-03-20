@@ -5,7 +5,7 @@ import React from "react";
 import Navigator from './src/navigation/Navigator';
 import { NativeBaseProvider, extendTheme } from "native-base";
 import { SafeAreaProvider } from 'react-native-safe-area-context'
-import {phyxiColorTheme, phyxiComponentsTheme, phyxiFontTheme, robotoConfig} from './src/constants';
+import {brandColor, phyxiColorTheme, phyxiComponentsTheme, phyxiFontTheme, robotoConfig} from './src/constants';
 
 
 import { useFonts } from 'expo-font';
@@ -18,7 +18,7 @@ export default function App() {
   const [fontsLoaded] = useFonts(robotoConfig);
   
   const theme = extendTheme({ 
-    colors : phyxiColorTheme,
+    colors : brandColor,
     fontConfig: phyxiFontTheme.fontConfig,
     fonts: phyxiFontTheme.fonts,
     components: phyxiComponentsTheme

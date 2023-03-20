@@ -14,7 +14,7 @@ const BookingScreen: React.FC = () => {
           View your booked services
         </Text>
         <SigninButton navigation={navigation}/>
-        <Text fontSize="md" textAlign="center" m={5}>
+        <Text variant="lightMd" textAlign="center" m={5}>
           Provides you an overview of recently booked services.
         </Text>
     </Information>

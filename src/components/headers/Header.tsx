@@ -15,9 +15,9 @@ const Header = () => {
         alignItems="center"
     >
       <Box flexDir="row">
-        <Heading color="orange.600">P</Heading>
+        <Heading color="primary.600">P</Heading>
         <Heading color="brandPrimary.600">hy</Heading>
-        <Heading color="orange.600">xi</Heading>
+        <Heading color="primary.600">xi</Heading>
       </Box>
         <IconButton _pressed={{
           opacity: 0.5,

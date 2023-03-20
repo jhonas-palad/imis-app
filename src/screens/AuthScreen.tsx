@@ -2,27 +2,27 @@ import { Box,Divider, Text, Button, HStack, Pressable } from 'native-base'
 import { useNavigation } from '@react-navigation/native';
 import React from 'react'
 import Information from '../components/Information';
-
+import AuthButton from '../components/AuthButton';
 
 const AuthScreen: React.FC = () => {
     const navigation = useNavigation();
 
   return (
     <Information 
-        _containerStyle={{bg:"darkBlue.700"}}
+        _containerStyle={{bg:"secondary.500"}}
         _statusBar='light-content'
         imageSrc={require('../../assets/images/auth_icons/3.png')}>
-        <Button
+        {/* <Button
             _text={{
                 fontSize: 'md',
                 fontWeight: '700',
-                color:"orange.600"
+                color:"primary.600"
             }} 
             mx={5} 
             alignSelf="stretch" 
             
             _light={{
-                borderColor:"orange.500",
+                borderColor:"primary.500",
                 bg:'white'
             }}
             rounded="full"
@@ -31,27 +31,30 @@ const AuthScreen: React.FC = () => {
             }}
         >
             Create an account
-        </Button>
-        
+        </Button> */}
+        <AuthButton 
+            title='Create an Account'
+            borderColor='white'
+            bg="white"
+            textColor='primary.600'
+            _style={{
+                alignSelf:'stretch'
+            }}
+            onPress={()=>{navigation.navigate('Signup')}}
+        />
         <Text my={5} fontWeight="bold" color="white" fontSize="md" textAlign="center">
             Have already an account?
         </Text>
-
-        <Button
-            _text={{
-                fontSize: 'md',
-                fontWeight: '700'
-            }} 
-            mx={5} 
-            alignSelf="stretch" 
-            bg="orange.500"
-            rounded={18}
-            onPress={()=>{
-                navigation.navigate('Signin');
+        <AuthButton 
+            title='Sign in'
+            borderColor='primary.600'
+            bg="primary.600"
+            textColor='white'
+            _style={{
+                alignSelf:'stretch'
             }}
-        >
-            Sign in
-        </Button>
+            onPress={()=>{navigation.navigate('Signin')}}
+        />
         <Button position="absolute" 
             bottom={10} 
             right={5} 

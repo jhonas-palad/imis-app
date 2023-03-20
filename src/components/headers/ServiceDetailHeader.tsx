@@ -11,10 +11,10 @@ const ServiceDetailHeader: React.FC<ServiceDetailHeader> = ({serviceName, naviga
     return (
         <HStack paddingX={3} _light={{bg:'white'}} bg="coolGray.100" justifyContent="space-between" alignItems="center">
             <IconButton onPress={()=>navigation.goBack()} _pressed={{bg:'transparent', opacity: 0.5}} 
-                icon={<Icon as={Feather} name="arrow-left" color="orange.500"  />}
+                icon={<Icon as={Feather} name="arrow-left" color="primary.500"  />}
             />
             <Text fontSize="md" color="darkBlue.800" fontWeight="700">{serviceName}</Text>
-            <IconButton _pressed={{bg:'none', opacity: 0.5}} rounded="full" icon={<Icon as={Feather} color="orange.500" name="search" size="md"/>}/>
+            <IconButton _pressed={{bg:'none', opacity: 0.5}} rounded="full" icon={<Icon as={Feather} color="primary.500" name="search" size="md"/>}/>
         </HStack>
     )
 }

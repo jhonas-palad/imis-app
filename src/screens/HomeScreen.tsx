@@ -38,7 +38,7 @@ export const HomeScreen: React.FC = () => {
                     </Box>
                     <Box flexDir="row" alignItems="center">
                         <Box ml={5} flex={0.5}>
-                            <Heading color="orange.600">
+                            <Heading color="primary.600">
                                 What services do you need?
                             </Heading>
                             <Flex mt={3} direction="row">

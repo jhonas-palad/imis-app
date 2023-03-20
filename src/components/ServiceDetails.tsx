@@ -81,7 +81,7 @@ const ServiceDetails: React.FC = () => {
                                                 opacity: 0.5,
                                             }}
                                             borderBottomWidth={categoryIndex === index ? 3: 0}
-                                            borderBottomColor="orange.600"
+                                            borderBottomColor="primary.600"
                                             >
                                             <Text fontWeight="600" color='darkBlue.800' textAlign="center" fontSize="md">{item.categoryName}</Text>
                                         </Pressable>
@@ -149,7 +149,7 @@ const ServiceDetails: React.FC = () => {
                 </HStack>
                 <Button _pressed={{
                     opacity: 0.8
-                }} bg="orange.600" rounded={0}
+                }} bg="primary.600" rounded={0}
                     onPress={() => {setServiceOrderDetails({myName: 'NameEEE'}); navigation.navigate('Date' as never)}}
                 >
                     <Text color="coolGray.50" fontWeight={700}>

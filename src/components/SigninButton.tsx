@@ -15,7 +15,7 @@ export const SigninButton: React.FC<Props> = ({navigation, _style}) => {
             }} 
             mx={5} 
             alignSelf="stretch" 
-            bg="orange.400"
+            bg="primary.400"
             rounded="full"
             {..._style}
             >

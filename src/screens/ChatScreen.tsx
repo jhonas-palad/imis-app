@@ -16,7 +16,7 @@ const ChatScreen = () => {
             Get in touch with service providers 
         </Text>
         <SigninButton navigation={navigation}/>
-        <Text fontSize="md" textAlign="center" m={5}>
+        <Text variant="lightMd" textAlign="center" m={5}>
           This ensures faster response times and quicker resolution of issues. 
         </Text>
     </Information>

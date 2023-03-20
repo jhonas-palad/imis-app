@@ -15,7 +15,7 @@ const BackButton: React.FC<Props> = ({navigation, _style}) => {
       icon={
         <Icon as={Feather} 
               name="arrow-left" 
-              color="orange.500"/>
+              color="primary.500"/>
       }
       {..._style}
       />

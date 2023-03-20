@@ -1,4 +1,5 @@
 import { robotoConfig, quickSandConfig } from "./fonts";
+import { brandColor } from "./colors";
 const phyxiColorTheme = {
     brandPrimary : {
       900: "#03989E",
@@ -9,6 +10,8 @@ const phyxiColorTheme = {
     },
 }
   
+
+
 const phyxiFontTheme = {
   fontConfig: {
     Roboto: {
@@ -39,12 +42,16 @@ const phyxiFontTheme = {
 const phyxiComponentsTheme = {
   Text: {
     baseStyle : {
-      color: 'darkBlue.800'
+      color: 'base.800'
     },
     variants: {
       light:{
         fontSize: 'sm',
-        color: 'coolGray.400'
+        color: 'base.500'
+      },
+      lightMd:{
+        fontSize: 'md',
+        color: 'base.500'
       }
     }
   },
@@ -85,5 +92,6 @@ export {
     phyxiFontTheme,
     phyxiComponentsTheme,
     robotoConfig,
-    quickSandConfig
+    quickSandConfig,
+    brandColor
 }

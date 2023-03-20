@@ -6,7 +6,7 @@ import { BackButton } from '../components';
 import { AntDesign, MaterialIcons } from '@expo/vector-icons';
 import WordBetweenLines from '../components/WordBetweenLines';
 import GoBackTitleHeader from '../components/GoBackTitleHeader';
-
+import { IconProps } from '@expo/vector-icons/build/createIconSet';
 
 const BUTTONS_INFO = [
     {
@@ -16,9 +16,9 @@ const BUTTONS_INFO = [
             name: "google",
             color: ""
         },
-        borderColor: "orange.500",
+        borderColor: "primary.500",
         bg: "white",
-        textColor: "orange.500"
+        textColor: "primary.500"
     },
     {
         title: 'Facebook',
@@ -27,9 +27,9 @@ const BUTTONS_INFO = [
             name: "facebook",
             color: ""
         },
-        borderColor: "orange.500",
+        borderColor: "primary.500",
         bg: "white",
-        textColor: "orange.500"
+        textColor: "primary.500"
     },
     {
         title: 'Email',
@@ -38,8 +38,8 @@ const BUTTONS_INFO = [
             name: "alternate-email",
             color: "white"
         },
-        borderColor: "orange.500",
-        bg: "orange.500",
+        borderColor: "primary.500",
+        bg: "primary.500",
         textColor: "white"
     },
     {
@@ -49,8 +49,8 @@ const BUTTONS_INFO = [
             name: "mobile1",
             color: "white"
         },
-        borderColor: "orange.500",
-        bg: "orange.500",
+        borderColor: "primary.500",
+        bg: "primary.500",
         textColor: "white"
     }
 ]
