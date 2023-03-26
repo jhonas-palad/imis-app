@@ -1,4 +1,4 @@
-import { HomeView, MapLocation, ServiceSearchView } from '../components';
+import { MapLocation, ServiceSearchView } from '../components';
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ServiceNavigator from './ServiceDetails';
@@ -16,10 +16,11 @@ const Stack = createNativeStackNavigator<HomeStackParamList>();
 
 const HomeNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName='HomeScreen'
-      screenOptions={{
-        headerShown: false
-      }}
+    <Stack.Navigator 
+        initialRouteName='HomeScreen'
+        screenOptions={{
+            headerShown: false
+        }}
     >
       <Stack.Screen 
         name="HomeScreen"

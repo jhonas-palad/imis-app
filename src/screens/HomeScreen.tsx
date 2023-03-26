@@ -1,9 +1,10 @@
-import { Box,Button, Text,HStack,  ScrollView, Pressable, Flex, Spacer, Badge, Image, Heading, Divider, IconButton, Icon, Center, StatusBar } from 'native-base';
+import { Box,Button, Text, HStack,  ScrollView, Pressable, Flex, Spacer, Badge, Image, Heading, Divider, IconButton, Icon, Center, StatusBar } from 'native-base';
 import {useNavigation} from '@react-navigation/native';
 import ServiceCategories from '../components/ServiceCategories';
 import { services } from '../data/category';
 import React, {useState, useCallback} from 'react';
 import { Feather } from '@expo/vector-icons';
+import Container from '../components/Container';
 
 export const HomeScreen: React.FC = () => {
     const navigation = useNavigation();
@@ -14,8 +15,7 @@ export const HomeScreen: React.FC = () => {
     }, []);
     return (
         <>
-            <StatusBar barStyle='dark-content'/>
-            <Box variant="base">
+            <Container base barStyle="dark-content">
                 <ScrollView stickyHeaderIndices={[1]}> 
                 <HStack alignItems="center" mt={5}  mb={10} px={5}>
                         <Pressable flexGrow={1} onPress={()=> navigation.navigate('MapLocation' as never)} _pressed={{opacity: 0.5}}>
@@ -65,7 +65,7 @@ export const HomeScreen: React.FC = () => {
                         <ServiceCategories categoryPress={categoryPress} data={data}/>
                     </Box>
                 </ScrollView>
-            </Box>
+            </Container>
         </>
     )
 }

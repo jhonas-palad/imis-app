@@ -7,8 +7,6 @@ type InformationProps = {
     _containerStyle?: any;
     imageSrc: number;
     children: ReactNode;
-
-
 }
 
 const Information: React.FC<InformationProps> = ({_statusBar = 'dark-content', imageSrc , children, _containerStyle}) => {

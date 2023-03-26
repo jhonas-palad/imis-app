@@ -5,7 +5,7 @@ import {Ionicons} from '@expo/vector-icons';
 import BookingScreen from '../screens/BookingScreen';
 import React from 'react'
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
-
+import { useSafeAreaInsets  } from "react-native-safe-area-context";
 // navigators
 import HomeNavigator from "./HomeNavigator";
 
@@ -55,8 +55,8 @@ export const BaseTabNavigator: React.FC = () => {
                     }
                     return <Icon as={Ionicons} name={iconName} size={size} color={color} />;
                 },
-                tabBarActiveTintColor: 'darkBlue.800',
-                tabBarInactiveTintColor: 'darkBlue.800',
+                tabBarActiveTintColor: 'primary.800',
+                tabBarInactiveTintColor: 'primary.800',
                 headerShown: false,
             })}
         >

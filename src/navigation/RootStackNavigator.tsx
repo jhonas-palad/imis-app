@@ -11,16 +11,16 @@ type RootStackParamList = {
     BaseTabNavigation: undefined;
     AuthenticationStack: undefined;
     Maplocation: undefined
-
 }
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
 const RootStackNavigator : React.FC =() => {
     return (
-        <RootStack.Navigator 
+        <RootStack.Navigator
             screenOptions={{headerShown: false}} 
-            initialRouteName='BaseTabNavigation'>
+            initialRouteName='BaseTabNavigation'
+            >
             <RootStack.Screen name="SplashScreen" component={SplashScreen} />
             <RootStack.Screen name="BaseTabNavigation" component={BaseTabNavigator}/>
             <RootStack.Screen 
